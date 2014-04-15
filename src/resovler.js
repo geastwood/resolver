@@ -1,6 +1,8 @@
 var resolver = (function() {
 
+
     var MODULE_NAME_REGEX = /(\S+?)\.(\S+)/;
+
 
     return function resolve(target, name, options) {
 
