@@ -6,7 +6,8 @@ var resolver = (function() {
 
     return function resolve(target, name) {
 
-        var action = 'get', obj, toSet = arguments.length === 3;
+        var action = 'get', obj, parse, hasSubmodule, toSet = arguments.length === 3;
+
         if (!name) {
             throw new Error('module name must be specified.');
         }
@@ -16,8 +17,8 @@ var resolver = (function() {
             obj = arguments[2];
         }
 
-        var parse = MODULE_NAME_REGEX.exec(name);
-        var hasSubmodule = parse !== null;
+        parse = MODULE_NAME_REGEX.exec(name);
+        hasSubmodule = parse !== null;
 
         if (hasSubmodule) {
 
@@ -33,6 +34,7 @@ var resolver = (function() {
         if (action === 'get') {
             return target[name];
         } else if (action === 'set') {
+
             if (typeof obj === undefined) {
                 throw new Error('Set action with an empty object.');
             }

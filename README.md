@@ -1,4 +1,4 @@
-moduler
+resolver
 =======
 
-moduler is a "module loader".
+Tiny piece of code to resolve name space.
