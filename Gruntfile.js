@@ -1,27 +1,25 @@
 module.exports = function(grunt) {
 
-  'use strict';
+    'use strict';
 
-  // Project configuration.
-  grunt.initConfig({
-    jasmine : {
-      src : 'src/*.js',
-      options : {
-        specs : 'tests/*.js'
-      }
-    },
-    watch: {
-        scripts: {
-            files: ['src/*.js', 'tests/*.js'],
-            tasks: ['jasmine']
+    // Project configuration.
+    grunt.initConfig({
+        jasmine : {
+            src : 'src/*.js',
+            options : {
+                specs : 'tests/*.js'
+            }
+        },
+        watch: {
+            scripts: {
+                files: ['src/*.js', 'tests/*.js'],
+                tasks: ['jasmine']
+            }
         }
-    }
-  });
+    });
 
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
-
-  grunt.registerTask('default', 'watch');
-
+    grunt.registerTask('default', 'watch');
 };
