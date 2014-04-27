@@ -1,25 +1,18 @@
 {
-  "name": "moduler",
-  "version": "0.0.0",
-  "description": "module manager",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "resolver",
+  "version": "0.1",
+  "description": "revole namespace",
   "repository": {
     "type": "git",
-    "url": "git://github.com/geastwood/moduler.git"
+    "url": "git://github.com/geastwood/resolver.git"
   },
   "keywords": [
-    "module"
+    "resolve", "module", "helper"
   ],
   "author": "Fei Liu <liu.feiwood@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/geastwood/moduler/issues"
+    "url": "https://github.com/geastwood/resolver/issues"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
