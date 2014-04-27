@@ -4,17 +4,13 @@ var resolver = (function() {
 
     var MODULE_NAME_REGEX = /(\S+?)\.(\S+)/;
 
-    return function resolve(target, name) {
+    return function resolve(target, name, options) {
 
-        var action = 'get', obj, parse, hasSubmodule, toSet = arguments.length === 3;
+        var parse, hasSubmodule;
+        options = options || {action: 'get'};
 
         if (!name) {
             throw new Error('module name must be specified.');
-        }
-
-        if (toSet) {
-            action = 'set';
-            obj = arguments[2];
         }
 
         parse = MODULE_NAME_REGEX.exec(name);
@@ -23,22 +19,17 @@ var resolver = (function() {
         if (hasSubmodule) {
 
             target[parse[1]] = target[parse[1]] || {};
-
-            if (toSet) {
-                return resolve(target[parse[1]], parse[2], obj);
-            } else {
-                return resolve(target[parse[1]], parse[2]);
-            }
+            return resolve(target[parse[1]], parse[2], options);
         }
 
-        if (action === 'get') {
+        if (options.action === 'get') {
             return target[name];
-        } else if (action === 'set') {
+        } else if (options.action === 'set') {
 
-            if (typeof obj === undefined) {
+            if (typeof options.obj === undefined) {
                 throw new Error('Set action with an empty object.');
             }
-            target[name] = obj;
+            target[name] = options.obj;
         } else {
             throw new Error('Failed to resolve.');
         }

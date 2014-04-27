@@ -13,15 +13,15 @@ describe('should resolve correctly', function() {
 
     beforeEach(function() {
         root = {name: 'root element'};
-        resolver(root, 'foo.bar.foobar', obj);
-        resolver(root, 'f@#.ba(.foobar', obj);
-        resolver(root, 'foo..bar', obj);
+        resolver(root, 'foo.bar.foobar', {action: 'set', obj: obj});
+        resolver(root, 'f@#.ba(.foobar', {action: 'set', obj: obj});
+        resolver(root, 'foo..bar', {action: 'set', obj: obj});
     });
 
     it('should resolve correctly', function() {
         expect(root.name).toBe('root element');
 
-        var rst = resolver(root, 'foo.bar.foobar');
+        var rst = resolver(root, 'foo.bar.foobar', {action: 'get'});
         var rst1 = resolver(root, 'foo');
         expect(rst).toEqual(obj);
         expect(rst1.bar.foobar).toEqual(obj);
